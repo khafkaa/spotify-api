@@ -1,4 +1,2 @@
 Pipfile
 Pipfile.lock
-src/run.py
-src/appauth.conf
