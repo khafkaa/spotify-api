@@ -1,6 +1,8 @@
+#!/Users/kafka/.local/share/virtualenvs/spotify-api-QrUSopDC/bin/python3.8
 import os
 import sys
 from time import sleep
+from textwrap import shorten
 from client import SpotifyClient
 from utilities.iter.accessories import fetch
 
@@ -39,8 +41,7 @@ if __name__ == '__main__':
             while not request:
                 request = query()
     
-            print(request)
-            status(stb, request)
+            status(stb, shorten(request, width=100, placeholder='...'))
             pos = api.get_playback(access=api.token)
             dur = api.get_track_duration(pos)
             sleep((dur/1000.0) + 3)
