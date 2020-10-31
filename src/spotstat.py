@@ -6,7 +6,7 @@ from textwrap import shorten
 from client import SpotifyClient
 from utilities.iter.accessories import fetch
 
-CLEAR = ''
+RESET = 'Connecting to Spotify...'
 TAGS = ['ARTIST: ', 'ALBUM: ', 'TRACK: ']
 
 app = os.environ.get('spotifyapp')
@@ -44,9 +44,9 @@ if __name__ == '__main__':
             status(stb, shorten(request, width=100, placeholder='...'))
             pos = api.get_playback(access=api.token)
             dur = api.get_track_duration(pos)
-            sleep((dur/1000.0) + 3)
+            sleep((dur/1000.0) + 2)
             request = 0
             
     except KeyboardInterrupt:
-        status(stb, CLEAR)
+        status(stb, RESET)
         sys.exit()

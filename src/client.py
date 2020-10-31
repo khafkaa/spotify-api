@@ -3,9 +3,17 @@ import json
 import urllib
 import base64
 import webbrowser as browser
+from datetime import datetime
+from datetime import timedelta
 from requests import exceptions
 from requests_html import HTMLSession
 from utilities.iter.accessories import fetch
+
+def get_future(secs):
+    mins = secs/60
+    future = datetime.now() + timedelta(minutes=mins)
+    return future.strftime('%H:%M:%S')
+
 
 class SpotifyClient():
 
@@ -119,7 +127,7 @@ class SpotifyClient():
                 self.token = response.json()['access_token']
                 self.expires = response.json()['expires_in']
                 self.refresh = response.json()['refresh_token']
-                print(f'access token expires in {self.expires/60} minutes')
+                print(f'access token expires at {get_future(self.expires)}')
                 
             except (exceptions.RequestException) as error:
                 print(f'An error has occured.\n{error}') 
@@ -150,7 +158,7 @@ class SpotifyClient():
                 self.expires = response.json()['expires_in']
                 if 'refresh_token' in response.json():
                     self.refresh = response.json()['refresh_token']
-                print(f'access token expires in {self.expires/60} minutes')
+                print(f'access token expires at {get_future(self.expires)}')
                 
             except (exceptions.RequestException) as error:
                 print(f'An error has occured.\n{error}')         
