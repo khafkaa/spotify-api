@@ -127,7 +127,7 @@ class SpotifyClient():
                 self.token = response.json()['access_token']
                 self.expires = response.json()['expires_in']
                 self.refresh = response.json()['refresh_token']
-                print(f'access token expires at {get_future(self.expires)}')
+                #print(f'access token expires at {get_future(self.expires)}')
                 
             except (exceptions.RequestException) as error:
                 print(f'An error has occured.\n{error}') 
@@ -158,7 +158,7 @@ class SpotifyClient():
                 self.expires = response.json()['expires_in']
                 if 'refresh_token' in response.json():
                     self.refresh = response.json()['refresh_token']
-                print(f'access token expires at {get_future(self.expires)}')
+                #print(f'access token expires at {get_future(self.expires)}')
                 
             except (exceptions.RequestException) as error:
                 print(f'An error has occured.\n{error}')         

@@ -12,10 +12,10 @@ TAGS = ['ARTIST: ', 'ALBUM: ', 'TRACK: ']
 app = os.environ.get('spotifyapp')
 key = os.environ.get('spotifykey')
 url = os.environ.get('appwebsite')
-tkn = os.environ.get('csrf_token')
-stb = os.environ.get('status_bar')
+tok = os.environ.get('csrf_token')
+bar = os.environ.get('status_bar')
 
-api = SpotifyClient(client=app, secret=key, csrf=tkn, redirect=url)
+api = SpotifyClient(client=app, secret=key, csrf=tok, redirect=url)
 api.refresh = os.environ.get('spotifyacc')
 
 def query():
@@ -41,12 +41,12 @@ if __name__ == '__main__':
             while not request:
                 request = query()
     
-            status(stb, shorten(request, width=100, placeholder='...'))
+            status(bar, shorten(request, width=100, placeholder='...'))
             pos = api.get_playback(access=api.token)
             dur = api.get_track_duration(pos)
             sleep((dur/1000.0) + 2)
             request = 0
             
     except KeyboardInterrupt:
-        status(stb, RESET)
+        status(bar, RESET)
         sys.exit()
