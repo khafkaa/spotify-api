@@ -1,4 +1,8 @@
 #!/Users/kafka/.local/share/virtualenvs/spotify-api-QrUSopDC/bin/python3.8
+"""
+Simple script that uses SpotifyClient to display currently 
+playing Spotify music in Tmux status bar.
+"""
 import os
 import sys
 from time import sleep
