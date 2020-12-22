@@ -8,7 +8,8 @@ import sys
 from time import sleep
 from textwrap import shorten
 from client import SpotifyClient
-from utilities.iter.accessories import fetch
+
+from iter.accessories import fetch
 
 RESET = 'Connecting to Spotify...'
 TAGS = ['ARTIST: ', 'ALBUM: ', 'TRACK: ']
