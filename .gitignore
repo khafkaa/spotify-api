@@ -1,3 +1,5 @@
 Pipfile
 Pipfile.lock
+src/deprecated/
 src/__pycache__/
+src/troubleshooting.py
